@@ -1,4 +1,3 @@
-import MariaVladimirovna as Mv
 import Darya as Da
 
 
@@ -10,6 +9,18 @@ MorseCode = {'Q': '--.-', 'W': '.--', 'E': '.', 'R': '.-.', 'T': '-',
              'M': '--', '1': '.----', '2': '..---', '3': '...--', '4': '....-',
              '5': '.....', '6': '-....', '7': '--...', '8': '---..',
              '9': '----.', '0': '-----'}
+
+
+def encode_to_morse(text):
+    # переводим в верхний регистр и разбиваем текст по символам пустого пространства
+    text = text.upper().split()
+    code_morse = []  # пустой список закодированных слов
+    for word in text:  # перебираем слова исходноо текста
+        string = ''  # каждое слово кодируем отдельно
+        for char in word:  # перебираем символы слова
+            if char in MorseCode:
+                code_morse.append(MorseCode[char])  # кодируем
+    return code_morse  # или ' '.join(code_morse)
 
 
 def main():
@@ -25,7 +36,7 @@ def main():
     if func in ['кодирование', "в код", "в морзе", "закодировать", "кодировать"]:
         print('Введите текст для кодирования:')
         text = input()
-        print(' '.join(Mv.encode_to_morse(text)))
+        print(' '.join(encode_to_morse(text)))
 
 
 main()
