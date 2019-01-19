@@ -6,6 +6,5 @@ def encode_to_morse(text):
         string = ''  # каждое слово кодируем отдельно
         for char in word:  # перебираем символы слова
             if char in MorseCode:
-                string += MorseCode[char]  # кодируем
-        code_morse.append(string)  # добавляем закодированное слово в список
+                code_morse.append(MorseCode[char])  # кодируем
     return code_morse  # или ' '.join(code_morse)
