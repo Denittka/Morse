@@ -27,15 +27,29 @@ def encode_to_morse(text):
 
 
 def decode_from_morse(code):
-    new_MorseCode = {}
+    new_MorseCode, new_MorseCode_rus = {}, {}
     for codes, letters in MorseCode.items():
         new_MorseCode[letters] = codes
+    for codes, letters in MorseCode_rus.items():
+        new_MorseCode_rus[letters] = codes
     # меняем местами ключи и значения(разворачиваем словарь)
     code = code.split()  # создаем список закодированных символов
     spisok = []  # пустой список для расшифрованных символов
-    for symb in code:  # перебираем зашифрованные символы
-        if symb in new_MorseCode:
-            spisok.append(new_MorseCode[symb]) # декодируем
+    print('Декодировать в кириллицу или латиницу?')
+    lang = input().lower()
+    while len(spisok) != len(code):
+        if 'лат' in lang:
+            for symb in code:  # перебираем зашифрованные символы
+                if symb in new_MorseCode:
+                    spisok.append(new_MorseCode[symb])  # декодируем
+        if 'кир' in lang:
+            for symb in code:  # перебираем зашифрованные символы
+                if symb in new_MorseCode_rus:
+                    spisok.append(new_MorseCode_rus[symb])  # декодируем
+        else:
+            print('Неверно введён вид письменности.')
+            print('Попробуйте ещё раз (латиница или кириллица):')
+            lang = input().lower()
     return spisok
 
 
@@ -48,16 +62,17 @@ def main():
                                 'декодирование', "раскодирование", "декодировка", "декодировать", ]):  # Проверка кода
         print('Неверный ввод. Необходимо вводить только название на русском языке, без цифр и знаков.')
         print("Попробуйте ещё раз:")
-        func = input()
-    if func in ['кодирование', "в код", "в морзе", "закодировать", "кодировать"]:
+        func = ''
+        func = input().lower()
+    if func in ['кодирование', "в код", "в морзе", "закодировать", "кодировать"]:  # Если выбрано кодирование.
         print('Введите текст для кодирования:')
         text = input()
         print(' '.join(encode_to_morse(text)))
-    if func in ['декодирование', "раскодирование", "декодировка", "декодировать", ]:
+    if func in ['декодирование', "раскодирование", "декодировка", "декодировать", ]:  # Если выбрано декодирование.
         print('Введите код:')
         code = input()
         print(''.join(decode_from_morse(code)))
-    input('Нажмите Enter, чтобы выйти из программы.')
+    input('Нажмите Enter, чтобы выйти из программы.')  # Выход.
 
 
 main()
