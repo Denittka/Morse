@@ -1,6 +1,3 @@
-import Darya as Da
-
-
 MorseCode = {'Q': '--.-', 'W': '.--', 'E': '.', 'R': '.-.', 'T': '-',
              'Y': '-.--', 'U': '..-', 'I': '..', 'O': '---', 'P': '.--.',
              'A': '.-', 'S': '...', 'D': '-..', 'F': '..-.', 'G': '--.',
@@ -50,7 +47,11 @@ def main():
         print('Введите текст для кодирования:')
         text = input()
         print(' '.join(encode_to_morse(text)))
+    if func in ['декодирование', "раскодирование", "декодировка", "декодировать", ]:
+        print('Введите код:')
+        code = input()
+        print(''.join(decode_from_morse(code)))
+    input('Нажмите Enter, чтобы выйти из программы.')
 
 
 main()
-print(decode_from_morse('.--- --- - .- .-. --- -.- ..- -.. .--- ---'))
