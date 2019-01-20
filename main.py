@@ -42,7 +42,7 @@ def decode_from_morse(code):
             for symb in code:  # перебираем зашифрованные символы
                 if symb in new_MorseCode:
                     spisok.append(new_MorseCode[symb])  # декодируем
-        if 'кир' in lang:
+        elif 'кир' in lang:
             for symb in code:  # перебираем зашифрованные символы
                 if symb in new_MorseCode_rus:
                     spisok.append(new_MorseCode_rus[symb])  # декодируем
