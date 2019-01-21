@@ -73,6 +73,3 @@ def main():
         code = input()
         print(''.join(decode_from_morse(code)))
     input('Нажмите Enter, чтобы выйти из программы.')  # Выход.
-
-
-main()
